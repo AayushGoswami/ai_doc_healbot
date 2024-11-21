@@ -4,12 +4,12 @@ import os
 from dotenv import load_dotenv
 
 # Load environment variables from .env file
-load_dotenv()
+# load_dotenv()
 
 class AIDoctor:
     def __init__(self):
         # Check if API key is available
-        api_key = os.getenv('GROQ_API_KEY')
+        api_key = st.secrets["GROQ_API_KEY"]
         if not api_key:
             raise ValueError(
                 "GROQ_API_KEY not found. Please make sure it's set in your .env file"
