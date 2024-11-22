@@ -27,11 +27,11 @@ class StreamlitApp:
 
     def display_header(self):
         #Display the app header and description
-        col1, col2 = st.columns([0.1,0.9])
-        with col1:
-            st.image("icon.png", use_column_width=True)
-        with col2:
-            st.title("HealBot")
+        # col1, col2 = st.columns([0.1,0.9])
+        # with col1:
+        #     st.image("icon.png", use_column_width=True)
+        # with col2:
+        st.title("🧑🏻‍⚕️HealBot")
         st.markdown("""
         Hi! I'm Dr. AI, your friendly AI doctor. I can communicate in many languages. I'm here to:
         * Chat about your health concerns
