@@ -3,24 +3,44 @@ from typing import Dict, List
 import os
 import streamlit as st
 import speech_recognition as sr
-import pyttsx3
+# import pyttsx3
 # from dotenv import load_dotenv
 
 # # Load environment variables from .env file
 # load_dotenv()
 
+from gtts import gTTS
+import tempfile
+
 def speak_text(text: str):
-    """Convert text to speech and play it."""
+    """Convert text to speech and play it using gTTS."""
     try:
-        engine = pyttsx3.init()
-        engine.setProperty('rate', 150)  # Adjust speech rate
-        engine.setProperty('volume', 1.0)  # Adjust volume (0.0 to 1.0)
-        voices = engine.getProperty('voices')
-        engine.setProperty('voice', voices[0].id)
-        engine.say(text)
-        engine.runAndWait()
+        # Generate speech
+        tts = gTTS(text=text, lang='en')
+        with tempfile.NamedTemporaryFile(delete=False, suffix=".mp3") as tmp_file:
+            tts.save(tmp_file.name)
+            tmp_path = tmp_file.name
+        
+        # Play the audio file
+        st.audio(tmp_path, format="audio/mp3")
+        
+        # Clean up
+        os.unlink(tmp_path)
     except Exception as e:
-        print(f"Error in speech synthesis: {e}")
+        st.error(f"Error in speech synthesis: {e}")
+
+# def speak_text(text: str):
+#     """Convert text to speech and play it."""
+#     try:
+#         engine = pyttsx3.init()
+#         engine.setProperty('rate', 150)  # Adjust speech rate
+#         engine.setProperty('volume', 1.0)  # Adjust volume (0.0 to 1.0)
+#         voices = engine.getProperty('voices')
+#         engine.setProperty('voice', voices[0].id)
+#         engine.say(text)
+#         engine.runAndWait()
+#     except Exception as e:
+#         print(f"Error in speech synthesis: {e}")
 
 def get_voice_input():
     r = sr.Recognizer()
