@@ -11,6 +11,23 @@ import speech_recognition as sr
 
 from gtts import gTTS
 import tempfile
+import sounddevice as sd
+import speech_recognition as sr
+
+def get_voice_input():
+    r = sr.Recognizer()
+    try:
+        # Use `sounddevice` as the audio source
+        with sr.AudioFile(sd.RawInputStream(dtype='int16', channels=1, samplerate=16000)) as source:
+            audio = r.listen(source)
+        text = r.recognize_google(audio)
+        return text, None
+    except sr.UnknownValueError:
+        return None, "Sorry, I couldn't understand that. Please try again."
+    except sr.RequestError as e:
+        return None, f"Request error: {e}"
+    except Exception as e:
+        return None, f"An error occurred: {e}"
 
 def speak_text(text: str):
     """Convert text to speech and play it using gTTS."""
@@ -42,17 +59,17 @@ def speak_text(text: str):
 #     except Exception as e:
 #         print(f"Error in speech synthesis: {e}")
 
-def get_voice_input():
-    r = sr.Recognizer()
-    with sr.Microphone() as source:
-        audio = r.listen(source)
-    try:
-        text = r.recognize_google(audio)
-        return text, None
-    except sr.UnknownValueError:
-        return None, "Sorry, I couldn't understand that. Please try again."
-    except sr.RequestError:
-        return None, "Sorry, there was an error processing your request. Please try again later."
+# def get_voice_input():
+#     r = sr.Recognizer()
+#     with sr.Microphone() as source:
+#         audio = r.listen(source)
+#     try:
+#         text = r.recognize_google(audio)
+#         return text, None
+#     except sr.UnknownValueError:
+#         return None, "Sorry, I couldn't understand that. Please try again."
+#     except sr.RequestError:
+#         return None, "Sorry, there was an error processing your request. Please try again later."
 
 class AIDoctor:
     def __init__(self):
