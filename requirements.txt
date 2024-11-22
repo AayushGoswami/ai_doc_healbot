@@ -2,4 +2,4 @@ groq
 fpdf2
 SpeechRecognition
 pyttsx3
-sounddevice
+espeak
