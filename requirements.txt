@@ -2,4 +2,5 @@ groq
 fpdf2
 SpeechRecognition
 gTTS
-PyAudio
+sounddevice
+
