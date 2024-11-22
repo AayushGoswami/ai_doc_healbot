@@ -1,2 +1,4 @@
 groq
 fpdf2
+SpeechRecognition
+pyttsx3
