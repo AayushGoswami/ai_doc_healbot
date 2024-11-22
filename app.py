@@ -100,8 +100,8 @@ class StreamlitApp:
                 st.markdown(
                     f"""
                     <div style="display: flex; justify-content: flex-end; margin: 1rem 0;">
-                        <div style="background-color: #47b36b; padding: 0.75rem; border-radius: 15px; max-width: 80%;">
-                            <p style="margin: 0; color: #000;">💬 {content}</p>
+                        <div style="background-color: #8a9ceb; padding: 0.75rem; border-radius: 15px; max-width: 80%;">
+                            <p style="margin: 0; color: #000;">🧑🏻 {content}</p>
                         </div>
                     </div>
                     """,
@@ -113,7 +113,7 @@ class StreamlitApp:
                     f"""
                     <div style="display: flex; margin: 1rem 0;">
                         <div style="background-color: #021617; padding: 0.75rem; border-radius: 15px; max-width: 80%;">
-                            <p style="margin: 0; color: #00a2cf;">👨‍⚕️ {content}</p>
+                            <p style="margin: 0;">🧑🏻‍⚕️ {content}</p>
                         </div>
                     </div>
                     """,
