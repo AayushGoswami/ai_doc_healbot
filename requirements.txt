@@ -1,6 +1,2 @@
 groq
 fpdf2
-SpeechRecognition
-gTTS
-sounddevice
-
