@@ -27,9 +27,9 @@ class StreamlitApp:
 
     def display_header(self):
         """Display the app header and description"""
-        st.title("🏥 AI Doctor Assistant")
+        st.title("🏥 HealBot")
         st.markdown("""
-        Hi! I'm Dr. AI, your friendly medical assistant. I'm here to:
+        Hi! I'm Dr. AI, your friendly AI doctor. I can communicate in many languages. I'm here to:
         * Chat about your health concerns
         * Help understand your symptoms
         * Suggest over-the-counter remedies
