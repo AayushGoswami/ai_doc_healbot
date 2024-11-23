@@ -4,3 +4,4 @@ streamlit
 speechrecognition
 pyttsx3
 pyaudio
+streamlit-webrtc
