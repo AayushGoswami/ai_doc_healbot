@@ -331,7 +331,7 @@ def main():
         }
         
         .main .block-container {
-            padding-top: 2rem;
+            padding-top: 1rem;
             padding-bottom: 3rem;
             padding-left: 5rem;
             padding-right: 5rem;
