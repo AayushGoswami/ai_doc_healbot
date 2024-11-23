@@ -1,6 +1,7 @@
 import groq
 from typing import Dict, List
 import os
+import pyaudio as pa
 import streamlit as st
 # from dotenv import load_dotenv
 import speech_recognition as sr
@@ -24,7 +25,7 @@ def speak_text(text: str):
 
 def get_voice_input():
     r = sr.Recognizer()
-    with sr.Microphone(device_index=0) as source:
+    with sr.Microphone(device_index=pa.get_default_input_device()) as source:
         audio = r.listen(source)
     try:
         text = r.recognize_google(audio)
