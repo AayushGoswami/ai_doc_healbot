@@ -1,2 +1,6 @@
 groq
 fpdf2
+streamlit
+speechrecognition
+pyttsx3
+pyaudio
