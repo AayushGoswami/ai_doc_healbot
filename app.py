@@ -27,9 +27,9 @@ class StreamlitApp:
 
     def display_header(self):
         #Display the app header and description
-        col1, col2 = st.columns([0.1,0.9])
+        col1, col2 = st.columns([0.15,0.85])
         with col1:
-            st.image("icon.png", use_column_width=True)
+            st.image("icon.png", use_column_width=100)
         with col2:
             st.title("HealBot")
         st.markdown("""
