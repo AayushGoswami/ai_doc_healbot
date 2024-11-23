@@ -1,7 +1,6 @@
 import groq
 from typing import Dict, List
 import os
-import portaudio as pa
 import streamlit as st
 # from dotenv import load_dotenv
 import speech_recognition as sr
