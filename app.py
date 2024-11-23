@@ -2,7 +2,8 @@ import streamlit as st
 from datetime import datetime
 from fpdf import FPDF
 from fpdf.enums import XPos, YPos
-from process import AIDoctor, get_voice_input, speak_text
+from process import AIDoctor, process_audio_input, speak_text
+import io
 
 class StreamlitApp:
     def __init__(self):
@@ -141,14 +142,32 @@ class StreamlitApp:
             )
         else:
             if st.button("Start Voice Input", type='primary'):
-                st.write("Listening... Speak now!")
-                user_input, error = get_voice_input()
-                if error:
-                    st.error(error)
+            # Audio recording
+                audio_bytes = st.microphone(key="audio_recorder")
+                
+                if audio_bytes:
+                    st.audio(audio_bytes, format='audio/wav')
+                    
+                    # Process the audio
+                    with st.spinner("Processing your message..."):
+                        try:
+                            user_input = process_audio_input(audio_bytes)
+                            if user_input:
+                                st.success(f"You said: {user_input}")
+                            else:
+                                st.error("Could not understand the audio. Please try again.")
+                                user_input = None
+                        except Exception as e:
+                            st.error(f"Error processing audio: {str(e)}")
+                            user_input = None
                 else:
-                    st.write(f"You said: {user_input}")
-            else:
-                user_input = None
+                    user_input = None
+        
+        if user_input:
+            # Add user message to history
+            st.session_state.conversation_history.append(
+                {"role": "user", "content": user_input}
+            )
         
         if user_input:
             # Add user message to history
