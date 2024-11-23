@@ -6,6 +6,8 @@ import streamlit as st
 # from dotenv import load_dotenv
 import speech_recognition as sr
 import pyttsx3
+import io
+import wave
 
 # Load environment variables from .env file
 # load_dotenv()
@@ -23,17 +25,37 @@ def speak_text(text: str):
     except Exception as e:
         print(f"Error in speech synthesis: {e}")
 
-def get_voice_input():
-    r = sr.Recognizer()
-    with sr.Microphone(device_index=pa.get_default_input_device()) as source:
-        audio = r.listen(source)
+def process_audio_input(audio_bytes):
+    """Process audio bytes from Streamlit's microphone input"""
     try:
-        text = r.recognize_google(audio)
-        return text, None
-    except sr.UnknownValueError:
-        return None, "Sorry, I couldn't understand that. Please try again."
-    except sr.RequestError:
-        return None, "Sorry, there was an error processing your request. Please try again later."
+        # Convert audio bytes to wav format for speech recognition
+        audio_segment = io.BytesIO(audio_bytes)
+        
+        # Initialize recognizer
+        r = sr.Recognizer()
+        
+        # Convert to AudioFile
+        with sr.AudioFile(audio_segment) as source:
+            audio_data = r.record(source)
+            
+        # Perform speech recognition
+        text = r.recognize_google(audio_data)
+        return text
+    except Exception as e:
+        print(f"Error processing audio: {e}")
+        return None
+
+# def get_voice_input():
+#     r = sr.Recognizer()
+#     with sr.Microphone(device_index=pa.get_default_input_device()) as source:
+#         audio = r.listen(source)
+#     try:
+#         text = r.recognize_google(audio)
+#         return text, None
+#     except sr.UnknownValueError:
+#         return None, "Sorry, I couldn't understand that. Please try again."
+#     except sr.RequestError:
+#         return None, "Sorry, there was an error processing your request. Please try again later."
 
 class AIDoctor:
     def __init__(self):
