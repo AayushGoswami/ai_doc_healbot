@@ -29,7 +29,7 @@ class StreamlitApp:
         #Display the app header and description
         col1, col2 = st.columns([0.15,0.85])
         with col1:
-            st.image("icon.png", use_column_width=100)
+            st.image("icon.png", width=100)
         with col2:
             st.title("HealBot")
         st.markdown("""
