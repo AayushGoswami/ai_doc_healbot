@@ -96,9 +96,9 @@ class AIDoctor:
             chat_completion = self.client.chat.completions.create(
                 messages=messages,
                 model="llama-3.2-11b-vision-preview",
-                temperature=0.7,
-                max_tokens=1024,
-                top_p=0.95,
+                # temperature=0.7,
+                # max_tokens=1024,
+                # top_p=0.95,
             )
             
             return chat_completion.choices[0].message.content
