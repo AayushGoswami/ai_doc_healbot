@@ -1,4 +1,4 @@
-import groq
+from groq import Groq
 import streamlit as st
 from typing import Dict, List
 import os
@@ -17,7 +17,7 @@ class AIDoctor:
             )
         
         # Initialize Groq client
-        self.client = groq.Groq(api_key=api_key)
+        self.client = Groq(api_key=api_key)
         
 
         # Enhanced system prompt for more conversational interactions
