@@ -1,6 +1,6 @@
 # HealBot: AI Medical Assistant
 
-![HealBot Icon](icon.png)
+![HealBot Icon](docs/display_icon.png)
 
 ---
 
