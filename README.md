@@ -8,7 +8,7 @@
 
 Try HealBot instantly on Streamlit Cloud:
 
-[**▶️ Launch Live App**](https://your-streamlit-cloud-link-here)
+[**▶️ Launch Live App**](https://healbot.streamlit.app/)
 
 ---
 

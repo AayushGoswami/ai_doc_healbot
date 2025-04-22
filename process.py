@@ -2,6 +2,7 @@ from groq import Groq
 import streamlit as st
 from typing import Dict, List
 import os
+
 # from dotenv import load_dotenv
 
 # Load environment variables from .env file
@@ -95,7 +96,7 @@ class AIDoctor:
             # Make the API call to Groq
             chat_completion = self.client.chat.completions.create(
                 messages=messages,
-                model="llama-3.2-11b-vision-preview",
+                model="llama-3.3-70b-versatile",
                 # temperature=0.7,
                 # max_tokens=1024,
                 # top_p=0.95,
